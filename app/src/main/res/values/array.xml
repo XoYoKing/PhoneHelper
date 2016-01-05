@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="phone_book_oprations">
+        <item>打电话</item>
+        <item>发短信</item>
+        <item>删除</item>
+        <item>取消</item>
+    </string-array>
+</resources>

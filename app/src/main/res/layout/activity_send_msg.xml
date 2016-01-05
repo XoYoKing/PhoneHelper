@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/top_lay"
+        layout="@layout/layout_view_head"></include>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/common_textview"
+            android:text="姓名：" />
+        <TextView
+            android:id="@+id/tv_user_name"
+            style="@style/common_textview"
+            android:text="Jack" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/common_textview"
+            android:text="手机：" />
+        <TextView
+            android:id="@+id/tv_user_num"
+            style="@style/common_textview"
+            android:text="13336326636" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#21a2d8"
+        android:layout_margin="5dp"
+        ></View>
+
+    <EditText
+        android:id="@+id/et_msgcontent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top|left"
+        android:minLines="3"
+        android:textSize="25sp" />
+
+    <LinearLayout
+        android:id="@+id/bottom_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.gc.materialdesign.views.ButtonRectangle
+            android:id="@+id/btn_cancle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#1E88E5"
+            android:text="取消"
+            android:textSize="13sp" />
+
+        <com.gc.materialdesign.views.ButtonRectangle
+            android:id="@+id/btn_send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#1E88E5"
+            android:text="发送"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+
+</LinearLayout>
