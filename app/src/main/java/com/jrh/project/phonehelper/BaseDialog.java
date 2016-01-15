@@ -6,12 +6,15 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+
 import butterknife.ButterKnife;
 
 public abstract class BaseDialog extends Dialog {
 
 	public Context context;
 	public  DTYPE type;
+	MaterialDialog dialog;
 	public enum DTYPE{
 		LIST_DIALOG
 	}

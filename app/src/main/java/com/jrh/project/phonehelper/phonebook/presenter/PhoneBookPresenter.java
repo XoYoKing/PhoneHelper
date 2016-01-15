@@ -9,12 +9,12 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.jrh.project.phonehelper.BasePresenter;
+import com.jrh.project.phonehelper.common.TextConfig;
 import com.jrh.project.phonehelper.common.listener.IListOnItemClickListener;
 import com.jrh.project.phonehelper.common.widgets.CommonDialog;
 import com.jrh.project.phonehelper.home.utils.ViewUtils;
@@ -57,9 +57,19 @@ public class PhoneBookPresenter extends BasePresenter implements AdapterView.OnI
 
     }
 
+    public void adjustSize(int size){
+        TextConfig.getInstance(mContext).setTextSize(size);
+        mAdapter.clear();
+        mAdapter = new PhoneBookLvAdapter(mContext);
+        getAllUsers();
+        mAdapter.setList(userDatas);
+        mListView.setAdapter(mAdapter);
+        mListView.setOnItemClickListener(this);
+        mAdapter.notifyDataSetChanged();
+    }
     //读取通讯录的全部的联系人
     //需要先在raw_contact表中遍历id，并根据id到data表中获取数据
-    public void getAllUsers() {
+    public    List<UserInfo>  getAllUsers() {
         userDatas.clear();
         //uri = content://com.android.contacts/contacts
         Uri uri = Uri.parse("content://com.android.contacts/contacts"); //访问raw_contacts表
@@ -94,10 +104,13 @@ public class PhoneBookPresenter extends BasePresenter implements AdapterView.OnI
                 }
             }
             userDatas.add(info);
+
             mAdapter.notifyDataSetChanged();
+
             String str = buf.toString();
-            Log.i("Contacts", str);
+//            Log.i("Contacts", str);
         }
+            return  userDatas;
     }
 
 
@@ -119,18 +132,18 @@ public class PhoneBookPresenter extends BasePresenter implements AdapterView.OnI
                         case CALL:
                             doCall(oposition);
                             break;
-                        case SEND_MSG:
-                            doSendMsg(oposition);
-                            break;
+//                        case SEND_MSG:
+//                            doSendMsg(oposition);
+//                            break;
                         case DELETE:
                             doDelete(oposition);
                             break;
                         case CANCLE:
                             doCancle();
                             break;
-                        case UPDATE_USER:
-                            doUpdate(oposition);
-                            break;
+//                        case UPDATE_USER:
+//                            doUpdate(oposition);
+//                            break;
                         default:
                             break;
                     }

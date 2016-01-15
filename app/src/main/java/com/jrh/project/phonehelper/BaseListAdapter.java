@@ -252,11 +252,7 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
     }
 
     public boolean judgeHasEmpty() {
-        if (list == null || list.size() == 0) {
-            isEmpty = true;
-        } else {
-            isEmpty = false;
-        }
+        isEmpty = list == null || list.size() == 0;
         return isEmpty;
 
     }

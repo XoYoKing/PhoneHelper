@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">手机助手</string>
+    <string name="app_name">老年通讯录</string>
     <string name="phone_book">电话本</string>
     <string name="title_activity_add_user">Sign in</string>
 
@@ -15,4 +15,5 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="error_empty_info">抱歉没有数据，可能原因有：\n 1:请确保通讯录有数据;\n 2:开启获取电话本权限，（简单解决方法：卸载重新安装，会弹出授权框提示，点确认就OK）</string>
 </resources>

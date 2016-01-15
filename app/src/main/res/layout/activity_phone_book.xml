@@ -8,11 +8,39 @@
     <include
         android:id="@+id/top_lay"
         layout="@layout/layout_view_head"></include>
+    <TextView
+        android:layout_below="@+id/top_lay"
+        android:id="@+id/empty_view"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/error_empty_info"/>
     <include
         android:layout_below="@+id/top_lay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         layout="@layout/layout_listview"></include>
 
-
+    <com.gc.materialdesign.views.ButtonFloat
+        android:id="@+id/btn_adjust_jian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="15dp"
+        android:background="#1E88E5"
+        materialdesign:animate="true"
+        android:visibility="gone"
+        materialdesign:iconDrawable="@drawable/jian" />
+    <com.gc.materialdesign.views.ButtonFloat
+        android:id="@+id/btn_adjust_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="15dp"
+        android:background="#1E88E5"
+        materialdesign:animate="true"
+        materialdesign:iconDrawable="@drawable/add" />
 </RelativeLayout>

@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.jrh.project.phonehelper.BaseListAdapter;
 import com.jrh.project.phonehelper.R;
+import com.jrh.project.phonehelper.common.TextConfig;
 import com.jrh.project.phonehelper.phonebook.models.UserInfo;
 
 import butterknife.Bind;
@@ -21,6 +22,7 @@ public class PhoneBookLvAdapter extends BaseListAdapter<UserInfo> {
         super(ctx);
     }
 
+
     @Override
     protected ViewHolder createViewHolder(View root) {
         return new MyHodler(root);
@@ -33,6 +35,8 @@ public class PhoneBookLvAdapter extends BaseListAdapter<UserInfo> {
         MyHodler h = (MyHodler) holder;
         h.tvName.setText(item.getName());
         h.tvNum.setText(item.getTelNum());
+        h.tvName.setTextSize(TextConfig.getInstance(ctx).getTextSize());
+        h.tvNum.setTextSize(TextConfig.getInstance(ctx).getTextSize());
     }
 
     @Override

@@ -6,14 +6,14 @@ package com.jrh.project.phonehelper.phonebook.models;
  */
 public enum PhoneBookOpration {
     CALL(0, "打电话"),
-    SEND_MSG(1,"发短信"),
-    UPDATE_USER(2,"修改"),
+//    SEND_MSG(1,"发短信"),
+    //UPDATE_USER(2,"修改"),
     DELETE(3,"删除"),
     CANCLE(4,"取消");
     private String opName;
     private int index;
 
-    private PhoneBookOpration(int index, String opName) {
+     PhoneBookOpration(int index, String opName) {
 
         this.index=index;
         this.opName = opName;

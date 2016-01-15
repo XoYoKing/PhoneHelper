@@ -9,9 +9,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.gc.materialdesign.views.ButtonRectangle;
 import com.jrh.project.phonehelper.BaseActivity;
 import com.jrh.project.phonehelper.R;
+import com.jrh.project.phonehelper.common.TextConfig;
 import com.jrh.project.phonehelper.common.event.EventMsg;
 import com.jrh.project.phonehelper.common.widgets.ShowToast;
 
@@ -34,7 +34,7 @@ public class AddUserActivity extends BaseActivity {
     @Bind(R.id.et_new_num)
     EditText etNewNum;
     @Bind(R.id.btn_sure)
-    ButtonRectangle btnSure;
+    TextView btnSure;
     Uri nameUri,numUri;
     /**
      * 插入失败重试次数
@@ -50,7 +50,12 @@ public class AddUserActivity extends BaseActivity {
     public void initView() {
 
         tvTitle.setText("添加联系人");
-
+        tvTitle.setTextSize(TextConfig.getInstance(this).getTextSize());
+        tvUserName.setTextSize(TextConfig.getInstance(this).getTextSize());
+        etNewName.setTextSize(TextConfig.getInstance(this).getTextSize());
+        tvUserNum.setTextSize(TextConfig.getInstance(this).getTextSize());
+        etNewNum.setTextSize(TextConfig.getInstance(this).getTextSize());
+        btnSure.setTextSize(TextConfig.getInstance(this).getTextSize());
     }
 
     @Override

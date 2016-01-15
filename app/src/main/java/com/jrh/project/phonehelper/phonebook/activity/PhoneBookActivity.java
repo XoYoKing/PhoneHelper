@@ -10,8 +10,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gc.materialdesign.views.ButtonFloat;
 import com.jrh.project.phonehelper.BaseActivity;
 import com.jrh.project.phonehelper.R;
+import com.jrh.project.phonehelper.common.TextConfig;
 import com.jrh.project.phonehelper.common.event.EventMsg;
 import com.jrh.project.phonehelper.home.utils.ViewUtils;
 import com.jrh.project.phonehelper.phonebook.models.UserInfo;
@@ -41,7 +43,17 @@ public class PhoneBookActivity extends BaseActivity {
     TextView tvTitle;
     @Bind(R.id.tv_right)
     TextView tvRight;
+    @Bind(R.id.btn_adjust_jian)
+    ButtonFloat btnAdjustJian;
+    @Bind(R.id.btn_adjust_add)
+    ButtonFloat btnAdjustAdd;
+    @Bind(R.id.empty_view)
+    TextView emptyView;
+
     private PhoneBookPresenter phoneBookPresenter;
+
+    int textSize = 20;
+    boolean isADD = true;
 
     @Override
     public int getViewId() {
@@ -53,8 +65,16 @@ public class PhoneBookActivity extends BaseActivity {
 
         EventBus.getDefault().register(this);
         tvTitle.setText("联系人");
-        tvRight.setText("添加联系人");
+        tvRight.setText("新建");
+        changeSize();
         tvRight.setVisibility(View.VISIBLE);
+        ivBack.setVisibility(View.GONE);
+    }
+
+    private void changeSize() {
+        int size = TextConfig.getInstance(this).getTextSize();
+        tvTitle.setTextSize(size > 25 ? 25 : size);
+        tvRight.setTextSize(size > 25 ? 25 : size);
     }
 
     @Override
@@ -94,9 +114,17 @@ public class PhoneBookActivity extends BaseActivity {
     }
 
     private void notifyRefresh() {
-        if (phoneBookPresenter==null){
-        phoneBookPresenter = new PhoneBookPresenter(this, listview);}
-        phoneBookPresenter.getAllUsers();
+        if (phoneBookPresenter == null) {
+            phoneBookPresenter = new PhoneBookPresenter(this, listview);
+        }
+        if (phoneBookPresenter.getAllUsers().size() <= 0) {
+            emptyView.setVisibility(View.VISIBLE);
+            listview.setVisibility(View.GONE);
+        } else {
+            emptyView.setVisibility(View.GONE);
+            listview.setVisibility(View.VISIBLE);
+        }
+
     }
 
     @OnClick(R.id.iv_back)
@@ -107,14 +135,14 @@ public class PhoneBookActivity extends BaseActivity {
     @OnClick(R.id.tv_right)
     public void addContact() {
 
-        ViewUtils.startActivity(this,AddUserActivity.class);
+        ViewUtils.startActivity(this, AddUserActivity.class);
     }
 
-    public void onEventMainThread(EventMsg eventMsg){
+    public void onEventMainThread(EventMsg eventMsg) {
 
-        if (eventMsg!=null){
-            if (eventMsg.getType()==EventMsg.ADD_USER){
-               notifyRefresh();
+        if (eventMsg != null) {
+            if (eventMsg.getType() == EventMsg.ADD_USER) {
+                notifyRefresh();
             }
         }
     }
@@ -124,4 +152,32 @@ public class PhoneBookActivity extends BaseActivity {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
     }
+
+    @OnClick({R.id.btn_adjust_jian, R.id.btn_adjust_add})
+    public void onAdjustClicked() {
+
+        if (isADD) {
+            textSize += 2;
+
+        } else {
+            textSize -= 2;
+        }
+        if (textSize > 30) {
+            textSize = 30;
+            isADD = false;
+            btnAdjustJian.setVisibility(View.VISIBLE);
+            btnAdjustAdd.setVisibility(View.GONE);
+        } else if (textSize < 16) {
+            isADD = true;
+            textSize = 16;
+            btnAdjustAdd.setVisibility(View.VISIBLE);
+            btnAdjustJian.setVisibility(View.GONE);
+        }
+
+        changeSize();
+        phoneBookPresenter.adjustSize(textSize);
+
+    }
+
+
 }

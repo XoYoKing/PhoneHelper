@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.jrh.project.phonehelper.BaseDialog;
 import com.jrh.project.phonehelper.R;
+import com.jrh.project.phonehelper.common.TextConfig;
 import com.jrh.project.phonehelper.common.adapter.ListDialogAdapter;
 import com.jrh.project.phonehelper.common.listener.IListOnItemClickListener;
 import com.jrh.project.phonehelper.phonebook.models.PhoneBookOpration;
@@ -88,6 +89,7 @@ public class CommonDialog extends BaseDialog {
     public void setTvTitle(String title) {
         if (!TextUtils.isEmpty(title)){
             tvTitle.setText(title);
+            tvTitle.setTextSize(TextConfig.getInstance(context).getTextSize());
         }
     }
 

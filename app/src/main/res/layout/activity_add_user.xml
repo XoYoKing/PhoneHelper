@@ -7,6 +7,7 @@
     tools:context="com.jrh.project.phonehelper.phonebook.activity.AddUserActivity">
 
     <include layout="@layout/layout_view_head"></include>
+
     <TextView
         android:id="@+id/tv_user_name"
         style="@style/common_textview"
@@ -33,14 +34,18 @@
         android:hint="请输入新的号码"
         android:inputType="phone"
         android:textSize="20sp" />
-    <com.gc.materialdesign.views.ButtonRectangle
-        android:id="@+id/btn_sure"
-       android:layout_gravity="right"
-        android:padding="20dp"
 
+    <TextView
+        android:gravity="center"
+        android:id="@+id/btn_sure"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#1E88E5"
+android:layout_marginLeft="@dimen/_8dp"
+        android:layout_marginRight="@dimen/_8dp"
+        android:background="@drawable/blue_btn_onclick_selector"
+        android:padding="10dp"
+        android:text="确定"
 
-        android:text="确定" />
+        android:textColor="@color/white"
+        android:textSize="20sp" />
 </LinearLayout>

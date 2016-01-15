@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.jrh.project.phonehelper.BaseListAdapter;
 import com.jrh.project.phonehelper.R;
+import com.jrh.project.phonehelper.common.TextConfig;
 import com.jrh.project.phonehelper.phonebook.models.PhoneBookOpration;
 
 import butterknife.Bind;
@@ -30,6 +31,7 @@ public class ListDialogAdapter extends BaseListAdapter<PhoneBookOpration> {
         if (item == null) return;
         Myhodler h = (Myhodler) holder;
         h.tvItem.setText(item.getOpName());
+        h.tvItem.setTextSize(TextConfig.getInstance(ctx).getTextSize());
     }
 
     @Override
